@@ -1,0 +1,7 @@
+FlowName,Priority,Expected-Delay-RTA,Expected-Delay-FRC,Actual-Delay,Relative-Deadline,Path
+Flow 15,3,60.160ms,35.640ms,35.640ms,100.000ms,Switch 1--Link 1--Switch 2--Link 3--Switch 3
+Flow 14,3,53.120ms,32.120ms,32.120ms,100.000ms,Switch 1--Link 1--Switch 2--Link 3--Switch 3
+Flow 7,4,50.160ms,32.240ms,32.240ms,200.000ms,Switch 1--Link 1--Switch 2--Link 2--Switch 4
+Flow 5,4,50.000ms,32.160ms,32.160ms,200.000ms,Switch 1--Link 1--Switch 2--Link 2--Switch 4
+Flow 4,4,49.920ms,32.120ms,32.120ms,200.000ms,Switch 1--Link 1--Switch 2--Link 2--Switch 4
+Flow 3,4,49.840ms,32.080ms,32.080ms,200.000ms,Switch 1--Link 1--Switch 2--Link 2--Switch 4
