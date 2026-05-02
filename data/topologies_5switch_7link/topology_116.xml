@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile FormatVersion="1">
+   <elements>
+      <network name="topology_116" num_nodes="5" num_links="7"/>
+      <!--Switches-->
+      <switch id="1" name="Switch 1" switch-bw-capacity="1 Gbps" sched-policy="SP"/>
+      <switch id="2" name="Switch 2" switch-bw-capacity="1 Gbps" sched-policy="SP"/>
+      <switch id="3" name="Switch 3" switch-bw-capacity="1 Gbps" sched-policy="SP"/>
+      <switch id="4" name="Switch 4" switch-bw-capacity="1 Gbps" sched-policy="SP"/>
+      <switch id="5" name="Switch 5" switch-bw-capacity="1 Gbps" sched-policy="SP"/>
+      <!--Links-->
+      <link id="1" name="Link 1" src="Switch 1" dst="Switch 4" link-bw-capacity="1 Gbps"/>
+      <link id="2" name="Link 2" src="Switch 1" dst="Switch 5" link-bw-capacity="1 Gbps"/>
+      <link id="3" name="Link 3" src="Switch 2" dst="Switch 3" link-bw-capacity="1 Gbps"/>
+      <link id="4" name="Link 4" src="Switch 2" dst="Switch 4" link-bw-capacity="1 Gbps"/>
+      <link id="5" name="Link 5" src="Switch 3" dst="Switch 4" link-bw-capacity="1 Gbps"/>
+      <link id="6" name="Link 6" src="Switch 3" dst="Switch 5" link-bw-capacity="1 Gbps"/>
+      <link id="7" name="Link 7" src="Switch 4" dst="Switch 5" link-bw-capacity="1 Gbps"/>
+   </elements>
+</Profile>

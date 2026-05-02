@@ -1,0 +1,12 @@
+graph topology_10 {
+  node [shape=circle, style=filled, color=lightblue, fontname="Arial"];
+  "Switch 1" -- "Switch 3";
+  "Switch 1" -- "Switch 4";
+  "Switch 1" -- "Switch 5";
+  "Switch 2" -- "Switch 3";
+  "Switch 2" -- "Switch 4";
+  "Switch 2" -- "Switch 5";
+  "Switch 3" -- "Switch 4";
+  "Switch 3" -- "Switch 5";
+  "Switch 4" -- "Switch 5";
+}

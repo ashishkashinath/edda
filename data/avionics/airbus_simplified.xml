@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile FormatVersion="1">
+   <elements>
+      <network name="avionics_simplified" num_nodes="4" num-links="3"/>
+      
+      <!--Switches/Hosts -->
+      <switch id="1" name="S1" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="2" name="S2" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="3" name="S3" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="4" name="S4" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+
+      <!--Links -->
+      <!-- Simplified Avionics Topology -->
+      <!-- S1: EC11, CC11, FC11, FC12, FC13 -->
+      <!-- S2: CC21, CC22 -->
+      <!-- S3: EC31, EC32, FC31, FC32 -->
+      <!-- S4: FC41, FC42, FC43, CC41, EC41 -->
+      <link id="1" name="Link 1" src="S1" dst="S2" link-bw-capacity="100 Mbps"/> 
+      <link id="2" name="Link 2" src="S1" dst="S3" link-bw-capacity="100 Mbps"/>
+      <link id="3" name="Link 3" src="S2" dst="S3" link-bw-capacity="100 Mbps"/>
+      <link id="4" name="Link 4" src="S2" dst="S4" link-bw-capacity="100 Mbps"/>
+      <link id="5" name="Link 5" src="S2" dst="S4" link-bw-capacity="100 Mbps"/>
+      
+      <!--Flight Control [4 Flows]-->
+      <!-- F1: FC11 (S1) to FC41 (S4) -->
+      <flow id="1" name="F1" source="S1" destination="S4" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us"
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F2: FC12 (S1) to FC42 (S4) -->
+      <flow id="2" name="F2" source="S1" destination="S4" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F3: FC13 (S1) to FC31 (S3) -->
+      <flow id="3" name="F3" source="S1" destination="S3" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F4: FC32 (S3) to FC43 (S4) -->
+      <flow id="4" name="F4" source="S3" destination="S4" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+
+      <!--Cockpit Control [2 Flows]-->
+      <!-- F1: CC11 (S1) to CC21 (S2) -->
+      <flow id="5" name="F5" source="S1" destination="S2" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us"
+         priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F2: CC41 (S4) to CC22 (S2) -->
+      <flow id="6" name="F6" source="S4" destination="S2" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!--Engine Control [2 Flows]-->
+      <!-- F3: EC11 (S1) to EC31 (S3) -->
+      <flow id="7" name="F7" source="S1" destination="S3" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F4: EC32 (S3) to EC41 (S4) -->
+      <flow id="8" name="F8" source="S3" destination="S4" 
+         packet-size-bytes="1518" bandwidth="1 Mbps" period="1 ms" deadline="900 us" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+
+      <!--Cabin Control [5 Flows]-->
+
+   </elements>
+</Profile>

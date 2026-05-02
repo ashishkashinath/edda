@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile FormatVersion="1">
+   <elements>
+      <network name="surgical_navigation_system" num_nodes="4" num-links="3"/>
+      
+      <!--Switches/Hosts -->
+      <switch id="1" name="S1" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="2" name="S2" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="3" name="S3" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="4" name="S4" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+
+      <!--Links -->
+      <!-- Daisy Chain Topology -->
+      <link id="1" name="Link 1" src="S1" dst="S2" link-bw-capacity="100 Mbps"/>
+      <link id="2" name="Link 2" src="S2" dst="S3" link-bw-capacity="100 Mbps"/>
+      <link id="3" name="Link 3" src="S3" dst="S4" link-bw-capacity="100 Mbps"/>
+
+      <!--Flows-->
+      <!-- F1: Foot Pedal (S4) to Surgical Drill (S1) -->
+      <flow id="1" name="F1" source="S4" destination="S1" 
+         packet-size-bytes="1024" bandwidth="500 Kbps" period="10 ms" deadline="10 s"
+         priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F2: Camera 1 (S2) to Visualizer (S4) -->
+      <flow id="2" name="F2" source="S2" destination="S4" 
+         packet-size-bytes="1024" bandwidth="8 Mbps" period="33.34 ms" deadline="30 s" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F3: Camera 2 (S2) to Visualizer (S4) -->
+      <flow id="3" name="F3" source="S2" destination="S4" 
+         packet-size-bytes="1024" bandwidth="8 Mbps" period="33.34 ms" deadline="30 s" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- F4: Sensor Data (S3) to Surgical Drill (S1) -->
+      <flow id="4" name="F4" source="S3" destination="S1" 
+         packet-size-bytes="1024" bandwidth="1 Mbps" period="100 ms" deadline="100 s" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+
+   </elements>
+</Profile>

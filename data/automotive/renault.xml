@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile FormatVersion="1">
+   <elements>
+      <network name="renault_prototype" num_nodes="5" num-links="4"/>
+      <!--Switches-->  
+      <switch id="1" name="Switch 1" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="2" name="Switch 2" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="3" name="Switch 3" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="4" name="Switch 4" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="5" name="Switch 5" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <!--Links-->
+      <link id="1" name="Link 1" src="Switch 1" dst="Switch 2" link-bw-capacity="100 Mbps"/>
+      <link id="2" name ="Link 2" src="Switch 2" dst="Switch 4" link-bw-capacity="100 Mbps"/>
+      <link id="3" name="Link 3" src="Switch 2" dst="Switch 3" link-bw-capacity="100 Mbps"/>
+      <link id="4" name="Link 4" src="Switch 3" dst="Switch 5" link-bw-capacity="100 Mbps"/>
+      <!--Flows-->
+      <!--Audio Streams-->
+      <!--Domain 1 to Domain 2-->
+      <flow id = "1" name="Flow 1" source="Switch 1" destination="Switch 2" packet-size-bytes="128" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />   
+      <flow id = "2" name="Flow 2" source="Switch 1" destination="Switch 4" packet-size-bytes="128" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "3" name="Flow 3" source="Switch 1" destination="Switch 4" packet-size-bytes="128" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "4" name="Flow 4" source="Switch 1" destination="Switch 4" packet-size-bytes="128" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "5" name="Flow 5" source="Switch 1" destination="Switch 4" packet-size-bytes="256" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "6" name="Flow 6" source="Switch 1" destination="Switch 2" packet-size-bytes="256" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "7" name="Flow 7" source="Switch 1" destination="Switch 4" packet-size-bytes="256" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "8" name="Flow 8" source="Switch 1" destination="Switch 2" packet-size-bytes="256" 
+         bandwidth="4 Mbps" period="1 ms" deadline="200 ms" priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <!--Video Streams-->
+      <flow id = "9" name="Flow 9" source="Switch 1" destination="Switch 4" packet-size-bytes="1446" 
+         bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "10" name="Flow 10" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+         bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "11" name="Flow 11" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+         bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "12" name="Flow 12" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+            bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "13" name="Flow 13" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+            bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "14" name="Flow 14" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+            bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "15" name="Flow 15" source="Switch 1" destination="Switch 3" packet-size-bytes="1446" 
+            bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "16" name="Flow 16" source="Switch 3" destination="Switch 5" packet-size-bytes="1446" 
+            bandwidth="22 Mbps" period="16 ms" deadline="100 ms" priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <!--Command and Control-->
+      <flow id = "17" name="Flow 17" source="Switch 3" destination="Switch 5" packet-size-bytes="256" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "18" name="Flow 18" source="Switch 3" destination="Switch 5" packet-size-bytes="256" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "19" name="Flow 19" source="Switch 3" destination="Switch 5" packet-size-bytes="256" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "20" name="Flow 20" source="Switch 3" destination="Switch 5" packet-size-bytes="512" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "21" name="Flow 21" source="Switch 3" destination="Switch 5" packet-size-bytes="512" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "22" name="Flow 22" source="Switch 2" destination="Switch 5" packet-size-bytes="512" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "23" name="Flow 23" source="Switch 2" destination="Switch 5" packet-size-bytes="1024" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "24" name="Flow 24" source="Switch 2" destination="Switch 5" packet-size-bytes="1024" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "25" name="Flow 25" source="Switch 2" destination="Switch 5" packet-size-bytes="1024" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "26" name="Flow 26" source="Switch 2" destination="Switch 5" packet-size-bytes="1024" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+      <flow id = "27" name="Flow 27" source="Switch 2" destination="Switch 5" packet-size-bytes="1024" 
+            bandwidth="4 Mbps" period="1 ms" deadline="5 ms" priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY" />
+   </elements>
+</Profile>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profile FormatVersion="1">
+   <elements>
+      <network name="power_grid_network" num_nodes="22" num-links="21"/>
+      
+      <!--Switches/Hosts-->
+      <!-- RTAC Devices (Core Layer) -->
+      <switch id="1" name="Switch 1" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      <switch id="2" name="Switch 2" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      <switch id="3" name="Switch 3" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      
+      <!-- Distribution Layer Switches -->
+      <switch id="4" name="Switch 4" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      <switch id="5" name="Switch 5" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      <switch id="6" name="Switch 6" switch-bw-capacity="1000 Mbps" sched-policy="SP"/>
+      
+      <!-- Primary Relay Devices (Access Layer) -->
+      <switch id="7" name="Switch 7" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="8" name="Switch 8" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="9" name="Switch 9" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="10" name="Switch 10" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      
+      <!-- Backup Relay Devices (Access Layer) -->
+      <switch id="11" name="Switch 11" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="12" name="Switch 12" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="13" name="Switch 13" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="14" name="Switch 14" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      
+      <!-- Load Devices (Access Layer) -->
+      <switch id="15" name="Switch 15" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="16" name="Switch 16" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      
+      <!-- Engineering Devices (Access Layer) -->
+      <switch id="17" name="Switch 17" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="18" name="Switch 18" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="19" name="Switch 19" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="20" name="Switch 20" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      
+      <!-- Access Switches for Load connectivity -->
+      <switch id="21" name="Switch 21" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      <switch id="22" name="Switch 22" switch-bw-capacity="100 Mbps" sched-policy="SP"/>
+      
+      <!--Links - Hierarchical Topology-->
+      <!-- Core to Distribution Layer -->
+      <link id="1" name="Link 1" src="Switch 1" dst="Switch 4" link-bw-capacity="1000 Mbps"/>
+      <link id="2" name="Link 2" src="Switch 2" dst="Switch 4" link-bw-capacity="1000 Mbps"/>
+      <link id="3" name="Link 3" src="Switch 3" dst="Switch 4" link-bw-capacity="1000 Mbps"/>
+      
+      <!-- Distribution to Aggregation Layer -->
+      <link id="4" name="Link 4" src="Switch 4" dst="Switch 5" link-bw-capacity="1000 Mbps"/>
+      <link id="5" name="Link 5" src="Switch 4" dst="Switch 6" link-bw-capacity="1000 Mbps"/>
+      
+      <!-- Relay Aggregation to Primary Relays -->
+      <link id="6" name="Link 6" src="Switch 5" dst="Switch 7" link-bw-capacity="1000 Mbps"/>
+      <link id="7" name="Link 7" src="Switch 5" dst="Switch 8" link-bw-capacity="1000 Mbps"/>
+      <link id="8" name="Link 8" src="Switch 5" dst="Switch 9" link-bw-capacity="1000 Mbps"/>
+      <link id="9" name="Link 9" src="Switch 5" dst="Switch 10" link-bw-capacity="1000 Mbps"/>
+      
+      <!-- Relay Aggregation to Backup Relays -->
+      <link id="10" name="Link 10" src="Switch 5" dst="Switch 11" link-bw-capacity="1000 Mbps"/>
+      <link id="11" name="Link 11" src="Switch 5" dst="Switch 12" link-bw-capacity="1000 Mbps"/>
+      <link id="12" name="Link 12" src="Switch 5" dst="Switch 13" link-bw-capacity="1000 Mbps"/>
+      <link id="13" name="Link 13" src="Switch 5" dst="Switch 14" link-bw-capacity="1000 Mbps"/>
+      
+      <!-- Engineering Aggregation to Engineering Devices -->
+      <link id="14" name="Link 14" src="Switch 6" dst="Switch 17" link-bw-capacity="1000 Mbps"/>
+      <link id="15" name="Link 15" src="Switch 6" dst="Switch 18" link-bw-capacity="1000 Mbps"/>
+      <link id="16" name="Link 16" src="Switch 6" dst="Switch 19" link-bw-capacity="1000 Mbps"/>
+      <link id="17" name="Link 17" src="Switch 6" dst="Switch 20" link-bw-capacity="1000 Mbps"/>
+      
+      <!-- Feeder to Load connections -->
+      <link id="18" name="Link 18" src="Switch 10" dst="Switch 21" link-bw-capacity="100 Mbps"/>
+      <link id="19" name="Link 19" src="Switch 21" dst="Switch 15" link-bw-capacity="100 Mbps"/>
+      <link id="20" name="Link 20" src="Switch 14" dst="Switch 22" link-bw-capacity="100 Mbps"/>
+      <link id="21" name="Link 21" src="Switch 22" dst="Switch 16" link-bw-capacity="100 Mbps"/>
+      
+      <!--Flows-->
+      <!-- Flow 1: Switch 1 to Switch 7 -->
+      <flow id="1" name="Flow 1" source="Switch 1" destination="Switch 7" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="10 ms" deadline="10 ms" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 2: Switch 3 to Switch 8 -->
+      <flow id="2" name="Flow 2" source="Switch 3" destination="Switch 8" 
+         packet-size-bytes="512" bandwidth="1 Mbps" period="1000 ms" deadline="1000 ms" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 3: Switch 17 to Switch 9 -->
+      <flow id="3" name="Flow 3" source="Switch 17" destination="Switch 9" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 4: Switch 18 to Switch 9 -->
+      <flow id="4" name="Flow 4" source="Switch 18" destination="Switch 9" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+
+      <!-- Flow 5: Switch 19 to Switch 9 -->
+      <flow id="5" name="Flow 5" source="Switch 19" destination="Switch 9" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 6: Switch 20 to Switch 9 -->
+      <flow id="6" name="Flow 6" source="Switch 20" destination="Switch 9" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 7: Switch 2 to Switch 10 -->
+      <flow id="7" name="Flow 7" source="Switch 2" destination="Switch 10" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="20 ms" deadline="20 ms" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 8: Switch 1 to Switch 11 -->
+      <flow id="8" name="Flow 8" source="Switch 1" destination="Switch 11" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="10 ms" deadline="10 ms" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 9: Switch 3 to Switch 12 -->
+      <flow id="9" name="Flow 9" source="Switch 3" destination="Switch 12" 
+         packet-size-bytes="512" bandwidth="1 Mbps" period="1000 ms" deadline="1000 ms" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 10: Switch 17 to Switch 13 -->
+      <flow id="10" name="Flow 10" source="Switch 17" destination="Switch 13" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 11: Switch 18 to Switch 13 -->
+      <flow id="11" name="Flow 11" source="Switch 18" destination="Switch 13" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 12: Switch 19 to Switch 13 -->
+      <flow id="12" name="Flow 12" source="Switch 19" destination="Switch 13" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 13: Switch 20 to Switch 13 -->
+      <flow id="13" name="Flow 13" source="Switch 20" destination="Switch 13" 
+         packet-size-bytes="2048" bandwidth="10 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 14: Switch 2 to Switch 14 -->
+      <flow id="14" name="Flow 14" source="Switch 2" destination="Switch 14" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="20 ms" deadline="20 ms" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 15: Switch 7 to Switch 1 -->
+      <flow id="15" name="Flow 15" source="Switch 7" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="10 ms" deadline="10 ms" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 16: Switch 11 to Switch 1 -->
+      <flow id="16" name="Flow 16" source="Switch 11" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="10 ms" deadline="10 ms" 
+         priority="1" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 17: Switch 17 to Switch 1 -->
+      <flow id="17" name="Flow 17" source="Switch 17" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 18: Switch 18 to Switch 1 -->
+      <flow id="18" name="Flow 18" source="Switch 18" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 19: Switch 19 to Switch 1 -->
+      <flow id="19" name="Flow 19" source="Switch 19" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 20: Switch 20 to Switch 1 -->
+      <flow id="20" name="Flow 20" source="Switch 20" destination="Switch 1" 
+         packet-size-bytes="1024" bandwidth="5 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 21: Switch 10 to Switch 2 -->
+      <flow id="21" name="Flow 21" source="Switch 10" destination="Switch 2" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="20 ms" deadline="20 ms" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 22: Switch 14 to Switch 2 -->
+      <flow id="22" name="Flow 22" source="Switch 14" destination="Switch 2" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="20 ms" deadline="20 ms" 
+         priority="2" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 23: Switch 8 to Switch 3 -->
+      <flow id="23" name="Flow 23" source="Switch 8" destination="Switch 3" 
+         packet-size-bytes="512" bandwidth="1 Mbps" period="1000 ms" deadline="1000 ms" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 24: Switch 12 to Switch 3 -->
+      <flow id="24" name="Flow 24" source="Switch 12" destination="Switch 3" 
+         packet-size-bytes="512" bandwidth="1 Mbps" period="1000 ms" deadline="1000 ms" 
+         priority="3" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 25: Switch 9 to Switch 17 -->
+      <flow id="25" name="Flow 25" source="Switch 9" destination="Switch 17" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 26: Switch 13 to Switch 17 -->
+      <flow id="26" name="Flow 26" source="Switch 13" destination="Switch 17" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 27: Switch 1 to Switch 17 -->
+      <flow id="27" name="Flow 27" source="Switch 1" destination="Switch 17" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 28: Switch 9 to Switch 18 -->
+      <flow id="28" name="Flow 28" source="Switch 9" destination="Switch 18" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 29: Switch 13 to Switch 18 -->
+      <flow id="29" name="Flow 29" source="Switch 13" destination="Switch 18" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 30: Switch 1 to Switch 18 -->
+      <flow id="30" name="Flow 30" source="Switch 1" destination="Switch 18" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 31: Switch 9 to Switch 19 -->
+      <flow id="31" name="Flow 31" source="Switch 9" destination="Switch 19" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 32: Switch 13 to Switch 19 -->
+      <flow id="32" name="Flow 32" source="Switch 13" destination="Switch 19" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 33: Switch 1 to Switch 19 -->
+      <flow id="33" name="Flow 33" source="Switch 1" destination="Switch 19" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 34: Switch 9 to Switch 20 -->
+      <flow id="34" name="Flow 34" source="Switch 9" destination="Switch 20" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+      
+      <!-- Flow 35: Switch 13 to Switch 20 -->
+      <flow id="35" name="Flow 35" source="Switch 13" destination="Switch 20" 
+         packet-size-bytes="2048" bandwidth="8 Mbps" period="100 ms" deadline="100 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="BACKUP"/>
+      
+      <!-- Flow 36: Switch 1 to Switch 20 -->
+      <flow id="36" name="Flow 36" source="Switch 1" destination="Switch 20" 
+         packet-size-bytes="1024" bandwidth="3 Mbps" period="50 ms" deadline="50 ms" 
+         priority="4" flow-type="PERIODIC" flow-safety-mode="PRIMARY"/>
+   </elements>
+</Profile>
